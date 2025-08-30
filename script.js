@@ -525,7 +525,7 @@ function bookService(serviceId) {
     } finally {
       isBookingFromPopup = false;
     }
-  }, 300); // زيادة التأخير إلى 300 مللي ثانية
+  }, 300); // تأخير 300 مللي ثانية
 }
 
 // سلايدر معرض الصور وإعدادات الحجز
@@ -688,7 +688,8 @@ document.addEventListener('DOMContentLoaded', () => {
           if (serviceSelect) serviceSelect.value = '';
           if (scheduleTable) scheduleTable.style.display = 'none';
           if (confirmButton) confirmButton.disabled = true;
-          window.location.href = `https://wa.me/+201030956097?text=${message}`;
+          // إرسال بيانات الحجز إلى واتساب
+          window.open(`https://wa.me/+201030956097?text=${message}`, '_blank');
         }
       });
     });
@@ -732,14 +733,14 @@ document.addEventListener('DOMContentLoaded', () => {
   window.showFullImage = showFullImage;
 });
 
-// خريطة Mapbox
+// خريطة Mapbox مع زر "الذهاب إلى المركز" ظاهر باستمرار
 function initMap() {
   try {
     mapboxgl.accessToken = 'pk.eyJ1IjoiYWhtYXR5YTAwIiwiYSI6ImNtYWJxbTFoNDExNXEyanIwa2xxcmJwdWoifQ.0WU0DyTqRl9TjV-Go2O2LA';
     const map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/satellite-v9',
-      center: [31.2357, 30.0511],
+      center: [31.2357, 30.0511], // إحداثيات وسط البلد، القاهرة
       zoom: 15
     });
 
@@ -752,15 +753,50 @@ function initMap() {
           .setHTML(`
             <h3>مركز ريفولي لطب الأسنان</h3>
             <p>27 شارع 26 يوليو، وسط البلد، القاهرة</p>
-            <a href="https://www.google.com/maps/dir/?api=1&destination=27+شارع+26+يوليو,+وسط+البلد,+القاهرة" target="_blank" class="map-direction-btn">الذهاب إلى المركز</a>
           `)
       )
       .addTo(map);
+
+    // إضافة زر "الذهاب إلى المركز" تحت الخريطة
+    const mapElement = document.getElementById('map');
+    if (mapElement) {
+      const directionButton = document.createElement('a');
+      directionButton.href = 'https://maps.app.goo.gl/ZHkwrt4XwrF24zHW9';
+      directionButton.target = '_blank';
+      directionButton.className = 'map-direction-btn';
+      directionButton.textContent = 'الذهاب إلى المركز';
+      directionButton.style.display = 'block';
+      directionButton.style.margin = '10px auto';
+      directionButton.style.textAlign = 'center';
+      directionButton.style.padding = '10px';
+      directionButton.style.backgroundColor = '#4FC3F7';
+      directionButton.style.color = '#fff';
+      directionButton.style.textDecoration = 'none';
+      directionButton.style.borderRadius = '5px';
+      directionButton.style.width = 'fit-content';
+      mapElement.insertAdjacentElement('afterend', directionButton);
+    }
   } catch (error) {
     console.error('خطأ في تحميل خريطة Mapbox:', error);
     const mapElement = document.getElementById('map');
     if (mapElement) {
       mapElement.innerHTML = '<p style="text-align: center; color: #D32F2F;">فشل تحميل الخريطة، يرجى المحاولة لاحقًا.</p>';
+      // إضافة زر "الذهاب إلى المركز" حتى لو فشلت الخريطة
+      const directionButton = document.createElement('a');
+      directionButton.href = 'https://maps.app.goo.gl/ZHkwrt4XwrF24zHW9';
+      directionButton.target = '_blank';
+      directionButton.className = 'map-direction-btn';
+      directionButton.textContent = 'الذهاب إلى المركز';
+      directionButton.style.display = 'block';
+      directionButton.style.margin = '10px auto';
+      directionButton.style.textAlign = 'center';
+      directionButton.style.padding = '10px';
+      directionButton.style.backgroundColor = '#4FC3F7';
+      directionButton.style.color = '#fff';
+      directionButton.style.textDecoration = 'none';
+      directionButton.style.borderRadius = '5px';
+      directionButton.style.width = 'fit-content';
+      mapElement.insertAdjacentElement('afterend', directionButton);
     }
   }
 }
