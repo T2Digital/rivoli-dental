@@ -62,32 +62,28 @@ const services = [
     id: 5,
     name: 'حشو عادي',
     description: 'حشوات لعلاج التسوس بمواد آمنة.',
-    image: 'https://via.placeholder.com/300x180?text=حشو+عادي',
+    image: 'https://i.ibb.co/Gvwwy0bR/7.png',
     duration: '45 دقيقة',
     benefits: 'إصلاح التسوس، حماية الأسنان.',
     moreInfo: 'حشوات متينة وآمنة.',
     details: 'حشوات عادية باستخدام مواد عالية الجودة لعلاج التسوس وحماية الأسنان.',
     video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     images: [
-      'https://via.placeholder.com/300x200?text=حشو+عادي+1',
-      'https://via.placeholder.com/300x200?text=حشو+عادي+2',
-      'https://via.placeholder.com/300x200?text=حشو+عادي+3'
+      'https://i.ibb.co/Gvwwy0bR/7.png',
     ]
   },
   {
     id: 6,
     name: 'حشو تجميلي أمامي',
     description: 'حشوات تجميلية للأسنان الأمامية.',
-    image: 'https://via.placeholder.com/300x180?text=حشو+تجميلي+أمامي',
+    image: 'https://i.ibb.co/qFkk3Sgj/8.png',
     duration: '1 ساعة',
     benefits: 'مظهر طبيعي، تحسين الابتسامة.',
     moreInfo: 'حشوات مطابقة للون الأسنان.',
     details: 'حشوات تجميلية أمامية بمواد مطابقة للون الأسنان لتحسين المظهر.',
     video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     images: [
-      'https://via.placeholder.com/300x200?text=حشو+أمامي+1',
-      'https://via.placeholder.com/300x200?text=حشو+أمامي+2',
-      'https://via.placeholder.com/300x200?text=حشو+أمامي+3'
+      'https://i.ibb.co/dJGM2kzZ/3.jpg',
     ]
   },
   {
@@ -941,6 +937,7 @@ if (mapSection) {
 
 // دعم اللغة الافتراضية
 document.documentElement.lang = navigator.language || 'ar';
+
 
 
 
