@@ -36,7 +36,7 @@ const services = [
     id: 3,
     name: 'تبييض الأسنان',
     description: 'تبييض الأسنان بأمان وسرعة.',
-    image: 'https://i.ibb.co/bgJkP6YJ/Screenshot-2025-08-24-034929.png',
+    image: 'https://via.placeholder.com/300x180?text=تبييض+الأسنان',
     duration: '1 ساعة',
     benefits: 'ابتسامة مشرقة، تحسين الثقة بالنفس.',
     moreInfo: 'استخدام ليزر آمن ومواد عالية الجودة.',
@@ -706,7 +706,7 @@ if (confirmButton) {
           title: 'جاري تأكيد الحجز عبر واتساب',
           text: 'سيتم فتح واتساب الآن لإرسال تفاصيل الحجز...',
           icon: 'info',
-          timer: 3000, // 3 ثوانٍ
+          timer: 3500, // زيادة إلى 3.5 ثوانٍ
           showConfirmButton: false,
           allowOutsideClick: false,
           allowEscapeKey: false,
@@ -723,18 +723,33 @@ if (confirmButton) {
             if (scheduleTable) scheduleTable.style.display = 'none';
             if (confirmButton) confirmButton.disabled = true;
 
-            // تعريف whatsappUrl وفتح واتساب
+            // تعريف رابط واتساب
             const whatsappUrl = `https://wa.me/+201030956097?text=${message}`;
-            window.location.href = whatsappUrl;
+
+            // محاولة فتح واتساب باستخدام window.location.href أولاً
+            const userAgent = navigator.userAgent.toLowerCase();
+            if (/android|webos|blackberry|opera mini|opera mobi|iemobile/i.test(userAgent)) {
+              // أندرويد: استخدام window.location.href
+              window.location.href = whatsappUrl;
+            } else if (/iphone|ipad|ipod/i.test(userAgent)) {
+              // آيفون: استخدام window.location.href
+              window.location.href = whatsappUrl;
+            } else {
+              // سطح المكتب: استخدام window.open لفتح تبويب جديد
+              const whatsappWindow = window.open(whatsappUrl, '_blank');
+              if (!whatsappWindow) {
+                throw new Error('فشل فتح نافذة واتساب. قد تكون النوافذ المنبثقة محظورة.');
+              }
+            }
           } catch (error) {
             console.error('خطأ أثناء إرسال بيانات الحجز إلى واتساب:', {
               error: error.message,
               userAgent: navigator.userAgent,
-              whatsappUrl: `https://wa.me/+201030956097?text=${message}`
+              whatsappUrl: whatsappUrl
             });
             Swal.fire({
               title: 'خطأ',
-              text: 'فشل إرسال الحجز إلى واتساب. يرجى التأكد من تثبيت تطبيق واتساب أو حاول فتح الرابط يدويًا: https://wa.me/+201030956097?text=' + message,
+              text: 'فشل إرسال الحجز إلى واتساب. يرجى التأكد من تثبيت تطبيق واتساب أو حاول فتح الرابط يدويًا: https://wa.me/+201030956097',
               icon: 'error',
               confirmButtonColor: '#4FC3F7'
             });
@@ -881,4 +896,3 @@ if (mapSection) {
 
 // دعم اللغة الافتراضية
 document.documentElement.lang = navigator.language || 'ar';
-
