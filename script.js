@@ -4,7 +4,7 @@ const services = [
     id: 1,
     name: 'استشارة',
     description: 'استشارة طبية لتقييم حالة الأسنان.',
-    image: 'https://via.placeholder.com/300x180?text=استشارة',
+    image: 'https://i.ibb.co/39hL9K7W/png.webp',
     duration: '30 دقيقة',
     benefits: 'تشخيص دقيق، خطة علاج مخصصة.',
     moreInfo: 'استشارة مع أطباء متخصصين.',
@@ -682,6 +682,9 @@ if (confirmButton) {
 
     console.log('رسالة واتساب:', decodeURIComponent(message)); // تسجيل الرسالة للتحقق
 
+    // تعريف whatsappUrl
+    const whatsappUrl = `https://wa.me/+201030956097?text=${message}`;
+
     // عرض ملخص الحجز
     Swal.fire({
       title: 'ملخص الحجز',
@@ -706,7 +709,7 @@ if (confirmButton) {
           title: 'جاري تأكيد الحجز عبر واتساب',
           text: 'سيتم فتح واتساب الآن لإرسال تفاصيل الحجز...',
           icon: 'info',
-          timer: 3500, // زيادة إلى 3.5 ثوانٍ
+          timer: 4000, // 4 ثوانٍ
           showConfirmButton: false,
           allowOutsideClick: false,
           allowEscapeKey: false,
@@ -723,24 +726,10 @@ if (confirmButton) {
             if (scheduleTable) scheduleTable.style.display = 'none';
             if (confirmButton) confirmButton.disabled = true;
 
-            // تعريف رابط واتساب
-            const whatsappUrl = `https://wa.me/+201030956097?text=${message}`;
-
-            // محاولة فتح واتساب باستخدام window.location.href أولاً
-            const userAgent = navigator.userAgent.toLowerCase();
-            if (/android|webos|blackberry|opera mini|opera mobi|iemobile/i.test(userAgent)) {
-              // أندرويد: استخدام window.location.href
+            // تأخير بسيط قبل التحويل لواتساب
+            setTimeout(() => {
               window.location.href = whatsappUrl;
-            } else if (/iphone|ipad|ipod/i.test(userAgent)) {
-              // آيفون: استخدام window.location.href
-              window.location.href = whatsappUrl;
-            } else {
-              // سطح المكتب: استخدام window.open لفتح تبويب جديد
-              const whatsappWindow = window.open(whatsappUrl, '_blank');
-              if (!whatsappWindow) {
-                throw new Error('فشل فتح نافذة واتساب. قد تكون النوافذ المنبثقة محظورة.');
-              }
-            }
+            }, 200); // تأخير 200 مللي ثانية
           } catch (error) {
             console.error('خطأ أثناء إرسال بيانات الحجز إلى واتساب:', {
               error: error.message,
