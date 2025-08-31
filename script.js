@@ -717,7 +717,7 @@ if (confirmButton) {
       return;
     }
 
-    // عرض ملخص الحجز
+    // عرض ملخص الحجز مع زر مباشر لواتساب
     Swal.fire({
       title: 'ملخص الحجز',
       html: `
@@ -727,13 +727,38 @@ if (confirmButton) {
         <p><strong>اليوم:</strong> ${selectedSlot.day}</p>
         <p><strong>الساعة:</strong> ${selectedSlot.time}</p>
         <p><strong>التاريخ:</strong> ${formattedDate}</p>
+        <br>
+        <p>اضغط لإرسال الحجز عبر واتساب الآن:</p>
+        <a href="${whatsappUrl}" id="whatsapp-direct-link" target="_blank" style="display: inline-block; padding: 10px 20px; background-color: #25D366; color: #fff; text-decoration: none; border-radius: 5px; margin-top: 10px;">إرسال إلى واتساب</a>
       `,
       icon: 'success',
-      confirmButtonText: 'تأكيد وإرسال إلى واتساب',
+      confirmButtonText: 'تأكيد وإرسال تلقائيًا',
       cancelButtonText: 'إلغاء',
       showCancelButton: true,
       confirmButtonColor: '#4FC3F7',
-      cancelButtonColor: '#D32F2F'
+      cancelButtonColor: '#D32F2F',
+      didOpen: () => {
+        // محاولة التوجيه التلقائي بعد فتح النافذة
+        try {
+          console.log('جاري التوجيه التلقائي إلى واتساب:', {
+            whatsappUrl,
+            userAgent: navigator.userAgent,
+            protocol: window.location.protocol,
+            currentUrl: window.location.href
+          });
+          window.location.href = whatsappUrl;
+        } catch (error) {
+          console.error('فشل التوجيه التلقائي:', {
+            error: error.message,
+            userAgent: navigator.userAgent,
+            whatsappUrl: whatsappUrl,
+            currentUrl: window.location.href,
+            protocol: window.location.protocol,
+            isSecure: isSecure
+          });
+          // لا نعرض إشعار فشل، الزر اليدوي موجود بالفعل
+        }
+      }
     }).then(result => {
       if (result.isConfirmed) {
         try {
@@ -746,14 +771,14 @@ if (confirmButton) {
           if (confirmButton) confirmButton.disabled = true;
 
           // تسجيل محاولة التوجيه
-          console.log('جاري التوجيه إلى واتساب:', {
+          console.log('جاري التوجيه اليدوي إلى واتساب:', {
             whatsappUrl,
             userAgent: navigator.userAgent,
             protocol: window.location.protocol,
             currentUrl: window.location.href
           });
 
-          // التوجيه المباشر لواتساب
+          // التوجيه التلقائي مرة أخرى عند التأكيد
           window.location.href = whatsappUrl;
 
         } catch (error) {
