@@ -738,10 +738,19 @@ if (confirmButton) {
             if (scheduleTable) scheduleTable.style.display = 'none';
             if (confirmButton) confirmButton.disabled = true;
 
-            // تأخير بسيط قبل التحويل لواتساب
+            // تأخير 500 مللي ثانية قبل التحويل
             setTimeout(() => {
+              // المحاولة الأولى: window.location.href
               window.location.href = whatsappUrl;
-            }, 300); // تأخير 300 مللي ثانية
+
+              // المحاولة الاحتياطية: window.open بعد 500 مللي ثانية إضافية
+              setTimeout(() => {
+                const whatsappWindow = window.open(whatsappUrl, '_blank');
+                if (!whatsappWindow) {
+                  throw new Error('فشل فتح نافذة واتساب. قد تكون النوافذ المنبثقة محظورة.');
+                }
+              }, 500);
+            }, 500); // تأخير 500 مللي ثانية
           } catch (error) {
             console.error('خطأ أثناء إرسال بيانات الحجز إلى واتساب:', {
               error: error.message,
