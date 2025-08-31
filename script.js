@@ -4,7 +4,7 @@ const services = [
     id: 1,
     name: 'استشارة',
     description: 'استشارة طبية لتقييم حالة الأسنان.',
-    image: 'https://i.ibb.co/39hL9K7W/png.webp',
+    image: 'https://via.placeholder.com/300x180?text=استشارة',
     duration: '30 دقيقة',
     benefits: 'تشخيص دقيق، خطة علاج مخصصة.',
     moreInfo: 'استشارة مع أطباء متخصصين.',
@@ -685,6 +685,18 @@ if (confirmButton) {
     // تعريف whatsappUrl
     const whatsappUrl = `https://wa.me/+201030956097?text=${message}`;
 
+    // فحص صلاحية الرابط
+    if (!whatsappUrl.startsWith('https://wa.me/')) {
+      console.error('رابط واتساب غير صالح:', { whatsappUrl });
+      Swal.fire({
+        title: 'خطأ',
+        text: 'رابط واتساب غير صالح. يرجى التواصل مع الدعم الفني.',
+        icon: 'error',
+        confirmButtonColor: '#4FC3F7'
+      });
+      return;
+    }
+
     // عرض ملخص الحجز
     Swal.fire({
       title: 'ملخص الحجز',
@@ -729,7 +741,7 @@ if (confirmButton) {
             // تأخير بسيط قبل التحويل لواتساب
             setTimeout(() => {
               window.location.href = whatsappUrl;
-            }, 200); // تأخير 200 مللي ثانية
+            }, 300); // تأخير 300 مللي ثانية
           } catch (error) {
             console.error('خطأ أثناء إرسال بيانات الحجز إلى واتساب:', {
               error: error.message,
@@ -738,8 +750,13 @@ if (confirmButton) {
             });
             Swal.fire({
               title: 'خطأ',
-              text: 'فشل إرسال الحجز إلى واتساب. يرجى التأكد من تثبيت تطبيق واتساب أو حاول فتح الرابط يدويًا: https://wa.me/+201030956097',
+              html: `
+                فشل إرسال الحجز إلى واتساب. يرجى التأكد من تثبيت تطبيق واتساب أو انقر على الرابط التالي لفتحه يدويًا:
+                <br><br>
+                <a href="${whatsappUrl}" target="_blank" style="color: #4FC3F7; text-decoration: underline;">فتح واتساب الآن</a>
+              `,
               icon: 'error',
+              confirmButtonText: 'حسناً',
               confirmButtonColor: '#4FC3F7'
             });
           }
