@@ -723,14 +723,14 @@ if (confirmButton) {
             if (scheduleTable) scheduleTable.style.display = 'none';
             if (confirmButton) confirmButton.disabled = true;
 
-            // فتح رابط واتساب باستخدام window.location.href
+            // تعريف whatsappUrl وفتح واتساب
             const whatsappUrl = `https://wa.me/+201030956097?text=${message}`;
             window.location.href = whatsappUrl;
           } catch (error) {
             console.error('خطأ أثناء إرسال بيانات الحجز إلى واتساب:', {
               error: error.message,
               userAgent: navigator.userAgent,
-              whatsappUrl: whatsappUrl
+              whatsappUrl: `https://wa.me/+201030956097?text=${message}`
             });
             Swal.fire({
               title: 'خطأ',
