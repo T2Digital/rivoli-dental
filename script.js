@@ -27,7 +27,7 @@ const services = [
     details: 'تنظيف عميق باستخدام الموجات فوق الصوتية لإزالة الجير والبقع بأمان.',
     video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     images: [
-      'https://i.ibb.co/845KqMYc/image.png',
+      'https://i.ibb.co/4gYHb0R8/2.png',
       'https://i.ibb.co/bgJkP6YJ/Screenshot-2025-08-24-034929.png',
     ]
   },
@@ -946,4 +946,5 @@ if (mapSection) {
 
 // دعم اللغة الافتراضية
 document.documentElement.lang = navigator.language || 'ar';
+
 
