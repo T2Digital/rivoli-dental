@@ -20,16 +20,15 @@ const services = [
     id: 2,
     name: 'تنظيف الأسنان',
     description: 'إزالة الجير والبقع للحفاظ على صحة الأسنان.',
-    image: 'https://via.placeholder.com/300x180?text=تنظيف+الأسنان',
+    image: 'https://i.ibb.co/845KqMYc/image.png',
     duration: '30 دقيقة',
     benefits: 'منع التسوس، تحسين صحة اللثة.',
     moreInfo: 'تنظيف بالموجات فوق الصوتية.',
     details: 'تنظيف عميق باستخدام الموجات فوق الصوتية لإزالة الجير والبقع بأمان.',
     video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     images: [
-      'https://via.placeholder.com/300x200?text=تنظيف+1',
-      'https://via.placeholder.com/300x200?text=تنظيف+2',
-      'https://via.placeholder.com/300x200?text=تنظيف+3'
+      'https://i.ibb.co/845KqMYc/image.png',
+      'https://i.ibb.co/bgJkP6YJ/Screenshot-2025-08-24-034929.png',
     ]
   },
   {
@@ -947,3 +946,4 @@ if (mapSection) {
 
 // دعم اللغة الافتراضية
 document.documentElement.lang = navigator.language || 'ar';
+
