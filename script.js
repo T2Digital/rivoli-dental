@@ -680,6 +680,8 @@ if (confirmButton) {
       `رابط المركز: https://revoli-dental.com`
     ).replace(/%0A/g, '%0D%0A'); // تحسين فواصل الأسطر للواتساب
 
+    console.log('رسالة واتساب:', decodeURIComponent(message)); // تسجيل الرسالة للتحقق
+
     // عرض ملخص الحجز
     Swal.fire({
       title: 'ملخص الحجز',
@@ -704,7 +706,7 @@ if (confirmButton) {
           title: 'جاري تأكيد الحجز عبر واتساب',
           text: 'سيتم فتح واتساب الآن لإرسال تفاصيل الحجز...',
           icon: 'info',
-          timer: 3000, // زيادة المدة إلى 3 ثوانٍ
+          timer: 3000, // 3 ثوانٍ
           showConfirmButton: false,
           allowOutsideClick: false,
           allowEscapeKey: false,
@@ -721,27 +723,9 @@ if (confirmButton) {
             if (scheduleTable) scheduleTable.style.display = 'none';
             if (confirmButton) confirmButton.disabled = true;
 
-            // كشف نوع الجهاز لاختيار صيغة الرابط المناسبة
-            const userAgent = navigator.userAgent.toLowerCase();
-            let whatsappUrl;
-            if (/android|webos|blackberry|opera mini|opera mobi|iemobile/i.test(userAgent)) {
-              // أجهزة أندرويد
-              whatsappUrl = `https://wa.me/+201030956097?text=${message}`;
-            } else if (/iphone|ipad|ipod/i.test(userAgent)) {
-              // أجهزة آيفون
-              whatsappUrl = `https://api.whatsapp.com/send?phone=+201030956097&text=${message}`;
-            } else {
-              // أجهزة سطح المكتب أو غيرها
-              whatsappUrl = `https://web.whatsapp.com/send?phone=+201030956097&text=${message}`;
-            }
-
-            // فتح رابط واتساب مع تأخير إضافي
-            setTimeout(() => {
-              const whatsappWindow = window.open(whatsappUrl, '_blank');
-              if (!whatsappWindow) {
-                throw new Error('فشل فتح نافذة واتساب. قد تكون النوافذ المنبثقة محظورة.');
-              }
-            }, 100); // تأخير 100 مللي ثانية لضمان التوافق
+            // فتح رابط واتساب باستخدام window.location.href
+            const whatsappUrl = `https://wa.me/+201030956097?text=${message}`;
+            window.location.href = whatsappUrl;
           } catch (error) {
             console.error('خطأ أثناء إرسال بيانات الحجز إلى واتساب:', {
               error: error.message,
