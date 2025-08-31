@@ -34,14 +34,14 @@ const services = [
     id: 3,
     name: 'تبييض الأسنان',
     description: 'تبييض الأسنان بأمان وسرعة.',
-    image: 'https://i.ibb.co/BkDP0Z7/5.png',
+    image: 'https://i.ibb.co/845KqMYc/image.png',
     duration: '1 ساعة',
     benefits: 'ابتسامة مشرقة، تحسين الثقة بالنفس.',
     moreInfo: 'استخدام ليزر آمن ومواد عالية الجودة.',
     details: 'تبييض الأسنان باستخدام ليزر آمن ومواد معتمدة عالميًا، مع نتائج فورية.',
     video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     images: [
-      'https://i.ibb.co/V0ppbbhz/1.jpg',
+      'https://i.ibb.co/845KqMYc/image.png',
     ]
   },
   {
@@ -857,6 +857,7 @@ if (mapSection) {
 
 // دعم اللغة الافتراضية
 document.documentElement.lang = navigator.language || 'ar';
+
 
 
 
