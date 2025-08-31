@@ -702,8 +702,20 @@ if (confirmButton) {
     console.log('بيئة التشغيل:', {
       protocol: window.location.protocol,
       host: window.location.host,
-      isSecure: isSecure
+      isSecure: isSecure,
+      currentUrl: window.location.href
     });
+
+    if (!isSecure) {
+      console.warn('تحذير: الموقع يعمل على بيئة غير آمنة (http أو localhost). قد يمنع المتصفح التوجيه التلقائي.');
+      Swal.fire({
+        title: 'تحذير',
+        text: 'الموقع يعمل على بيئة غير آمنة (http أو localhost). يرجى رفع الموقع على سيرفر آمن (https) لضمان عمل التوجيه التلقائي.',
+        icon: 'warning',
+        confirmButtonColor: '#4FC3F7'
+      });
+      return;
+    }
 
     // عرض ملخص الحجز
     Swal.fire({
@@ -724,74 +736,51 @@ if (confirmButton) {
       cancelButtonColor: '#D32F2F'
     }).then(result => {
       if (result.isConfirmed) {
-        // عرض إشعار "جاري تأكيد الحجز عبر واتساب"
-        Swal.fire({
-          title: 'جاري تأكيد الحجز عبر واتساب',
-          text: 'سيتم فتح واتساب الآن لإرسال تفاصيل الحجز...',
-          icon: 'info',
-          timer: 2000, // 2 ثانية
-          showConfirmButton: false,
-          allowOutsideClick: false,
-          allowEscapeKey: false,
-          didOpen: () => {
-            Swal.showLoading();
-          }
-        }).then(() => {
-          try {
-            bookedSlots.push(selectedSlot);
-            displaySchedule();
-            if (patientName) patientName.value = '';
-            if (patientPhone) patientPhone.value = '';
-            if (serviceSelect) serviceSelect.value = '';
-            if (scheduleTable) scheduleTable.style.display = 'none';
-            if (confirmButton) confirmButton.disabled = true;
+        try {
+          bookedSlots.push(selectedSlot);
+          displaySchedule();
+          if (patientName) patientName.value = '';
+          if (patientPhone) patientPhone.value = '';
+          if (serviceSelect) serviceSelect.value = '';
+          if (scheduleTable) scheduleTable.style.display = 'none';
+          if (confirmButton) confirmButton.disabled = true;
 
-            // تسجيل محاولة التوجيه
-            console.log('جاري التوجيه إلى واتساب:', {
-              whatsappUrl,
-              userAgent: navigator.userAgent,
-              protocol: window.location.protocol
-            });
+          // تسجيل محاولة التوجيه
+          console.log('جاري التوجيه إلى واتساب:', {
+            whatsappUrl,
+            userAgent: navigator.userAgent,
+            protocol: window.location.protocol,
+            currentUrl: window.location.href
+          });
 
-            // التوجيه المباشر لواتساب
-            window.location.href = whatsappUrl;
+          // التوجيه المباشر لواتساب
+          window.location.href = whatsappUrl;
 
-            // محاولة احتياطية بسيطة
-            setTimeout(() => {
-              if (window.location.href !== whatsappUrl) {
-                console.warn('فشل window.location.href، جاري المحاولة بـ window.open');
-                const whatsappWindow = window.open(whatsappUrl, '_blank');
-                if (!whatsappWindow) {
-                  throw new Error('فشل فتح واتساب. قد تكون النوافذ المنبثقة محظورة أو المتصفح يمنع التوجيه.');
-                }
-              }
-            }, 500); // فحص بعد 500 مللي ثانية
-          } catch (error) {
-            console.error('خطأ أثناء إرسال بيانات الحجز إلى واتساب:', {
-              error: error.message,
-              userAgent: navigator.userAgent,
-              whatsappUrl: whatsappUrl,
-              currentUrl: window.location.href,
-              protocol: window.location.protocol,
-              isSecure: isSecure
-            });
-            Swal.fire({
-              title: 'خطأ',
-              html: `
-                فشل إرسال الحجز إلى واتساب. يرجى التأكد من تثبيت تطبيق واتساب أو انقر على الرابط التالي لفتحه يدويًا:
-                <br><br>
-                <a href="${whatsappUrl}" target="_blank" style="color: #4FC3F7; text-decoration: underline;">فتح واتساب الآن</a>
-                <br><br>
-                أو انسخ الرسالة التالية وأرسلها يدويًا إلى +201030956097:
-                <br>
-                <textarea readonly style="width: 100%; height: 120px; margin-top: 10px; font-size: 14px;">${decodeURIComponent(message)}</textarea>
-              `,
-              icon: 'error',
-              confirmButtonText: 'حسناً',
-              confirmButtonColor: '#4FC3F7'
-            });
-          }
-        });
+        } catch (error) {
+          console.error('خطأ أثناء إرسال بيانات الحجز إلى واتساب:', {
+            error: error.message,
+            userAgent: navigator.userAgent,
+            whatsappUrl: whatsappUrl,
+            currentUrl: window.location.href,
+            protocol: window.location.protocol,
+            isSecure: isSecure
+          });
+          Swal.fire({
+            title: 'خطأ',
+            html: `
+              فشل إرسال الحجز إلى واتساب. يرجى التأكد من تثبيت تطبيق واتساب أو انقر على الرابط التالي لفتحه يدويًا:
+              <br><br>
+              <a href="${whatsappUrl}" target="_blank" style="color: #4FC3F7; text-decoration: underline;">فتح واتساب الآن</a>
+              <br><br>
+              أو انسخ الرسالة التالية وأرسلها يدويًا إلى +201030956097:
+              <br>
+              <textarea readonly style="width: 100%; height: 120px; margin-top: 10px; font-size: 14px;">${decodeURIComponent(message)}</textarea>
+            `,
+            icon: 'error',
+            confirmButtonText: 'حسناً',
+            confirmButtonColor: '#4FC3F7'
+          });
+        }
       }
     });
   });
