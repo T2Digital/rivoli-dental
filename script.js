@@ -87,22 +87,6 @@ const services = [
     ]
   },
   {
-    id: 7,
-    name: 'حشو تجميلي خلفي',
-    description: 'حشوات تجميلية للأسنان الخلفية.',
-    image: 'https://via.placeholder.com/300x180?text=حشو+تجميلي+خلفي',
-    duration: '1 ساعة',
-    benefits: 'متانة ومظهر طبيعي.',
-    moreInfo: 'حشوات بيضاء متينة.',
-    details: 'حشوات تجميلية خلفية بمواد متينة لضمان المظهر والوظيفة.',
-    video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    images: [
-      'https://via.placeholder.com/300x200?text=حشو+خلفي+1',
-      'https://via.placeholder.com/300x200?text=حشو+خلفي+2',
-      'https://via.placeholder.com/300x200?text=حشو+خلفي+3'
-    ]
-  },
-  {
     id: 8,
     name: 'زراعة الأسنان',
     description: 'زراعة أسنان دائمة بجودة عالية.',
@@ -148,22 +132,6 @@ const services = [
       'https://via.placeholder.com/300x200?text=تركيبات+متحركة+1',
       'https://via.placeholder.com/300x200?text=تركيبات+متحركة+2',
       'https://via.placeholder.com/300x200?text=تركيبات+متحركة+3'
-    ]
-  },
-  {
-    id: 11,
-    name: 'علاج عصب',
-    description: 'علاج قنوات العصب بدقة عالية.',
-    image: 'https://via.placeholder.com/300x180?text=علاج+عصب',
-    duration: '1-2 ساعة',
-    benefits: 'إزالة الألم، الحفاظ على السن.',
-    moreInfo: 'علاج باستخدام أحدث الأجهزة.',
-    details: 'علاج قنوات العصب باستخدام أجهزة متطورة لضمان الراحة وإزالة الألم.',
-    video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    images: [
-      'https://via.placeholder.com/300x200?text=عصب+1',
-      'https://via.placeholder.com/300x200?text=عصب+2',
-      'https://via.placeholder.com/300x200?text=عصب+3'
     ]
   },
   {
@@ -228,54 +196,6 @@ const services = [
       'https://via.placeholder.com/300x200?text=خلع+جراحي+1',
       'https://via.placeholder.com/300x200?text=خلع+جراحي+2',
       'https://via.placeholder.com/300x200?text=خلع+جراحي+3'
-    ]
-  },
-  {
-    id: 16,
-    name: 'خلع ضرس العقل',
-    description: 'خلع ضرس العقل بأمان.',
-    image: 'https://via.placeholder.com/300x180?text=خلع+ضرس+العقل',
-    duration: '1 ساعة',
-    benefits: 'إزالة الألم، منع المضاعفات.',
-    moreInfo: 'إجراءات دقيقة لخلع ضرس العقل.',
-    details: 'خلع ضرس العقل باستخدام تقنيات متقدمة لتقليل الألم والمضاعفات.',
-    video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    images: [
-      'https://via.placeholder.com/300x200?text=ضرس+العقل+1',
-      'https://via.placeholder.com/300x200?text=ضرس+العقل+2',
-      'https://via.placeholder.com/300x200?text=ضرس+العقل+3'
-    ]
-  },
-  {
-    id: 17,
-    name: 'خلع ضرس العقل المدفون',
-    description: 'خلع ضرس العقل المدفون بإجراءات جراحية.',
-    image: 'https://via.placeholder.com/300x180?text=خلع+ضرس+العقل+المدفون',
-    duration: '1-2 ساعة',
-    benefits: 'إزالة الألم، منع المضاعفات.',
-    moreInfo: 'جراحة دقيقة لضرس العقل المدفون.',
-    details: 'خلع ضرس العقل المدفون باستخدام تقنيات جراحية متقدمة لضمان الراحة.',
-    video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    images: [
-      'https://via.placeholder.com/300x200?text=ضرس+العقل+المدفون+1',
-      'https://via.placeholder.com/300x200?text=ضرس+العقل+المدفون+2',
-      'https://via.placeholder.com/300x200?text=ضرس+العقل+المدفون+3'
-    ]
-  },
-  {
-    id: 18,
-    name: 'جراحة الأسنان',
-    description: 'إجراءات جراحية لعلاج مشكلات الأسنان المعقدة.',
-    image: 'https://via.placeholder.com/300x180?text=جراحة+الأسنان',
-    duration: '1-3 ساعات',
-    benefits: 'حل المشكلات المعقدة، تحسين الصحة الفموية.',
-    moreInfo: 'جراحات دقيقة بأحدث التقنيات.',
-    details: 'إجراءات جراحية متقدمة لعلاج مشكلات الأسنان المعقدة بأعلى معايير الجودة.',
-    video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    images: [
-      'https://via.placeholder.com/300x200?text=جراحة+1',
-      'https://via.placeholder.com/300x200?text=جراحة+2',
-      'https://via.placeholder.com/300x200?text=جراحة+3'
     ]
   }
 ];
@@ -937,6 +857,7 @@ if (mapSection) {
 
 // دعم اللغة الافتراضية
 document.documentElement.lang = navigator.language || 'ar';
+
 
 
 
