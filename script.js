@@ -697,6 +697,14 @@ if (confirmButton) {
       return;
     }
 
+    // فحص بيئة التشغيل
+    const isSecure = window.location.protocol === 'https:';
+    console.log('بيئة التشغيل:', {
+      protocol: window.location.protocol,
+      host: window.location.host,
+      isSecure: isSecure
+    });
+
     // عرض ملخص الحجز
     Swal.fire({
       title: 'ملخص الحجز',
@@ -721,7 +729,7 @@ if (confirmButton) {
           title: 'جاري تأكيد الحجز عبر واتساب',
           text: 'سيتم فتح واتساب الآن لإرسال تفاصيل الحجز...',
           icon: 'info',
-          timer: 3000, // 3 ثوانٍ
+          timer: 2000, // 2 ثانية
           showConfirmButton: false,
           allowOutsideClick: false,
           allowEscapeKey: false,
@@ -739,28 +747,33 @@ if (confirmButton) {
             if (confirmButton) confirmButton.disabled = true;
 
             // تسجيل محاولة التوجيه
-            console.log('جاري التوجيه إلى واتساب:', { whatsappUrl, userAgent: navigator.userAgent });
+            console.log('جاري التوجيه إلى واتساب:', {
+              whatsappUrl,
+              userAgent: navigator.userAgent,
+              protocol: window.location.protocol
+            });
 
             // التوجيه المباشر لواتساب
             window.location.href = whatsappUrl;
 
-            // فحص احتياطي للتأكد من التوجيه (بعد 1 ثانية)
+            // محاولة احتياطية بسيطة
             setTimeout(() => {
-              // إذا لم يتغير عنوان الصفحة، جرب window.open
               if (window.location.href !== whatsappUrl) {
                 console.warn('فشل window.location.href، جاري المحاولة بـ window.open');
                 const whatsappWindow = window.open(whatsappUrl, '_blank');
                 if (!whatsappWindow) {
-                  throw new Error('فشل فتح واتساب. قد تكون النوافذ المنبثقة محظورة.');
+                  throw new Error('فشل فتح واتساب. قد تكون النوافذ المنبثقة محظورة أو المتصفح يمنع التوجيه.');
                 }
               }
-            }, 1000);
+            }, 500); // فحص بعد 500 مللي ثانية
           } catch (error) {
             console.error('خطأ أثناء إرسال بيانات الحجز إلى واتساب:', {
               error: error.message,
               userAgent: navigator.userAgent,
               whatsappUrl: whatsappUrl,
-              currentUrl: window.location.href
+              currentUrl: window.location.href,
+              protocol: window.location.protocol,
+              isSecure: isSecure
             });
             Swal.fire({
               title: 'خطأ',
@@ -769,9 +782,9 @@ if (confirmButton) {
                 <br><br>
                 <a href="${whatsappUrl}" target="_blank" style="color: #4FC3F7; text-decoration: underline;">فتح واتساب الآن</a>
                 <br><br>
-                أو انسخ الرسالة التالية وأرسلها يدويًا:
+                أو انسخ الرسالة التالية وأرسلها يدويًا إلى +201030956097:
                 <br>
-                <textarea readonly style="width: 100%; height: 100px; margin-top: 10px;">${decodeURIComponent(message)}</textarea>
+                <textarea readonly style="width: 100%; height: 120px; margin-top: 10px; font-size: 14px;">${decodeURIComponent(message)}</textarea>
               `,
               icon: 'error',
               confirmButtonText: 'حسناً',
