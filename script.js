@@ -48,16 +48,14 @@ const services = [
     id: 4,
     name: 'توريد اللثة',
     description: 'علاج تصبغ اللثة لتحسين المظهر.',
-    image: 'https://via.placeholder.com/300x180?text=توريد+اللثة',
+    image: 'https://i.ibb.co/0pPXmJQ0/6.png',
     duration: '1 ساعة',
     benefits: 'لثة صحية ومظهر جمالي.',
     moreInfo: 'علاج بالليزر لتصحيح لون اللثة.',
     details: 'توريد اللثة باستخدام تقنيات ليزر متقدمة للحصول على لثة صحية ومظهر طبيعي.',
     video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     images: [
-      'https://via.placeholder.com/300x200?text=توريد+1',
-      'https://via.placeholder.com/300x200?text=توريد+2',
-      'https://via.placeholder.com/300x200?text=توريد+3'
+      'https://i.ibb.co/YF9LYyss/2.jpg',
     ]
   },
   {
@@ -943,6 +941,7 @@ if (mapSection) {
 
 // دعم اللغة الافتراضية
 document.documentElement.lang = navigator.language || 'ar';
+
 
 
 
