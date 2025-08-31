@@ -20,7 +20,7 @@ const services = [
     id: 2,
     name: 'تنظيف الأسنان',
     description: 'إزالة الجير والبقع للحفاظ على صحة الأسنان.',
-    image: 'https://via.placeholder.com/300x180?text=تنظيف+الأسنان',
+    image: 'https://i.ibb.co/bgJkP6YJ/Screenshot-2025-08-24-034929.png',
     duration: '30 دقيقة',
     benefits: 'منع التسوس، تحسين صحة اللثة.',
     moreInfo: 'تنظيف بالموجات فوق الصوتية.',
@@ -36,7 +36,7 @@ const services = [
     id: 3,
     name: 'تبييض الأسنان',
     description: 'تبييض الأسنان بأمان وسرعة.',
-    image: 'https://via.placeholder.com/300x180?text=تبييض+الأسنان',
+    image: 'https://i.ibb.co/39hL9K7W/png.webp',
     duration: '1 ساعة',
     benefits: 'ابتسامة مشرقة، تحسين الثقة بالنفس.',
     moreInfo: 'استخدام ليزر آمن ومواد عالية الجودة.',
@@ -627,73 +627,117 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (confirmButton) {
-    confirmButton.addEventListener('click', () => {
-      const serviceId = serviceSelect ? serviceSelect.value : '';
-      const name = patientName ? patientName.value.trim() : '';
-      const phone = patientPhone ? patientPhone.value.trim() : '';
+  confirmButton.addEventListener('click', () => {
+    const serviceId = serviceSelect ? serviceSelect.value : '';
+    const name = patientName ? patientName.value.trim() : '';
+    const phone = patientPhone ? patientPhone.value.trim() : '';
 
-      if (!name || !phone || !serviceId || !selectedSlot) {
-        Swal.fire('خطأ', 'يرجى إدخال جميع البيانات واختيار موعد', 'error');
-        return;
-      }
-
-      if (!/^\d{11}$/.test(phone)) {
-        Swal.fire('خطأ', 'يرجى إدخال رقم هاتف صحيح (11 رقم)', 'error');
-        return;
-      }
-
-      const service = services.find(s => s.id == serviceId);
-      if (!service) {
-        Swal.fire('خطأ', 'الخدمة المختارة غير صالحة', 'error');
-        return;
-      }
-
-      const bookingDate = new Date();
-      bookingDate.setDate(bookingDate.getDate() + 7);
-      const formattedDate = bookingDate.toLocaleDateString('ar-EG');
-
-      const message = encodeURIComponent(
-        `حجز جديد:\n` +
-        `الاسم: ${name}\n` +
-        `رقم الهاتف: ${phone}\n` +
-        `الخدمة: ${service.name}\n` +
-        `اليوم: ${selectedSlot.day}\n` +
-        `الساعة: ${selectedSlot.time}\n` +
-        `التاريخ: ${formattedDate}\n` +
-        `رابط المركز: https://revoli-dental.com`
-      );
-
+    // التحقق من اكتمال البيانات
+    if (!name || !phone || !serviceId || !selectedSlot) {
       Swal.fire({
-        title: 'ملخص الحجز',
-        html: `
-          <p><strong>الاسم:</strong> ${name}</p>
-          <p><strong>رقم الهاتف:</strong> ${phone}</p>
-          <p><strong>الخدمة:</strong> ${service.name}</p>
-          <p><strong>اليوم:</strong> ${selectedSlot.day}</p>
-          <p><strong>الساعة:</strong> ${selectedSlot.time}</p>
-          <p><strong>التاريخ:</strong> ${formattedDate}</p>
-        `,
-        icon: 'success',
-        confirmButtonText: 'تأكيد وإرسال إلى واتساب',
-        cancelButtonText: 'إلغاء',
-        showCancelButton: true,
-        confirmButtonColor: '#4FC3F7',
-        cancelButtonColor: '#D32F2F'
-      }).then(result => {
-        if (result.isConfirmed) {
-          bookedSlots.push(selectedSlot);
-          displaySchedule();
-          if (patientName) patientName.value = '';
-          if (patientPhone) patientPhone.value = '';
-          if (serviceSelect) serviceSelect.value = '';
-          if (scheduleTable) scheduleTable.style.display = 'none';
-          if (confirmButton) confirmButton.disabled = true;
-          // إرسال بيانات الحجز إلى واتساب
-          window.open(`https://wa.me/+201030956097?text=${message}`, '_blank');
-        }
+        title: 'خطأ',
+        text: 'يرجى إدخال جميع البيانات واختيار موعد',
+        icon: 'error',
+        confirmButtonColor: '#4FC3F7'
       });
+      return;
+    }
+
+    if (!/^\d{11}$/.test(phone)) {
+      Swal.fire({
+        title: 'خطأ',
+        text: 'يرجى إدخال رقم هاتف صحيح (11 رقم)',
+        icon: 'error',
+        confirmButtonColor: '#4FC3F7'
+      });
+      return;
+    }
+
+    const service = services.find(s => s.id == serviceId);
+    if (!service) {
+      Swal.fire({
+        title: 'خطأ',
+        text: 'الخدمة المختارة غير صالحة',
+        icon: 'error',
+        confirmButtonColor: '#4FC3F7'
+      });
+      return;
+    }
+
+    const bookingDate = new Date();
+    bookingDate.setDate(bookingDate.getDate() + 7);
+    const formattedDate = bookingDate.toLocaleDateString('ar-EG');
+
+    // تشكيل الرسالة مع التأكد من التشفير الصحيح
+    const message = encodeURIComponent(
+      `حجز جديد:\n` +
+      `الاسم: ${name}\n` +
+      `رقم الهاتف: ${phone}\n` +
+      `الخدمة: ${service.name}\n` +
+      `اليوم: ${selectedSlot.day}\n` +
+      `الساعة: ${selectedSlot.time}\n` +
+      `التاريخ: ${formattedDate}\n` +
+      `رابط المركز: https://revoli-dental.com`
+    );
+
+    // عرض ملخص الحجز
+    Swal.fire({
+      title: 'ملخص الحجز',
+      html: `
+        <p><strong>الاسم:</strong> ${name}</p>
+        <p><strong>رقم الهاتف:</strong> ${phone}</p>
+        <p><strong>الخدمة:</strong> ${service.name}</p>
+        <p><strong>اليوم:</strong> ${selectedSlot.day}</p>
+        <p><strong>الساعة:</strong> ${selectedSlot.time}</p>
+        <p><strong>التاريخ:</strong> ${formattedDate}</p>
+      `,
+      icon: 'success',
+      confirmButtonText: 'تأكيد وإرسال إلى واتساب',
+      cancelButtonText: 'إلغاء',
+      showCancelButton: true,
+      confirmButtonColor: '#4FC3F7',
+      cancelButtonColor: '#D32F2F'
+    }).then(result => {
+      if (result.isConfirmed) {
+        // عرض إشعار "جاري تأكيد الحجز عبر واتساب"
+        Swal.fire({
+          title: 'جاري تأكيد الحجز عبر واتساب',
+          text: 'سيتم فتح واتساب الآن لإرسال تفاصيل الحجز...',
+          icon: 'info',
+          timer: 2000,
+          showConfirmButton: false,
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          didOpen: () => {
+            Swal.showLoading();
+          }
+        }).then(() => {
+          try {
+            bookedSlots.push(selectedSlot);
+            displaySchedule();
+            if (patientName) patientName.value = '';
+            if (patientPhone) patientPhone.value = '';
+            if (serviceSelect) serviceSelect.value = '';
+            if (scheduleTable) scheduleTable.style.display = 'none';
+            if (confirmButton) confirmButton.disabled = true;
+
+            // فتح رابط واتساب في تبويب جديد مع التأكد من صيغة الرابط
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=+201030956097&text=${message}`;
+            window.open(whatsappUrl, '_blank');
+          } catch (error) {
+            console.error('خطأ أثناء إرسال بيانات الحجز إلى واتساب:', error);
+            Swal.fire({
+              title: 'خطأ',
+              text: 'فشل إرسال الحجز إلى واتساب، يرجى المحاولة لاحقًا.',
+              icon: 'error',
+              confirmButtonColor: '#4FC3F7'
+            });
+          }
+        });
+      }
     });
-  }
+  });
+}
 
   // تعديل حدث تغيير القائمة المنسدلة
   if (serviceSelect) {
@@ -733,26 +777,26 @@ document.addEventListener('DOMContentLoaded', () => {
   window.showFullImage = showFullImage;
 });
 
-// خريطة Mapbox مع زر "الذهاب إلى المركز" ظاهر باستمرار
+// خريطة Mapbox مع إحداثيات محدثة وزف "الذهاب إلى المركز" ظاهر باستمرار
 function initMap() {
   try {
     mapboxgl.accessToken = 'pk.eyJ1IjoiYWhtYXR5YTAwIiwiYSI6ImNtYWJxbTFoNDExNXEyanIwa2xxcmJwdWoifQ.0WU0DyTqRl9TjV-Go2O2LA';
     const map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/satellite-v9',
-      center: [31.2357, 30.0511], // إحداثيات وسط البلد، القاهرة
+      center: [31.24037666608025, 30.05329359703648], // إحداثيات محدثة
       zoom: 15
     });
 
     map.addControl(new mapboxgl.NavigationControl(), 'top-right');
 
     const marker = new mapboxgl.Marker()
-      .setLngLat([31.2357, 30.0511])
+      .setLngLat([31.24037666608025, 30.05329359703648]) // إحداثيات محدثة
       .setPopup(
         new mapboxgl.Popup({ offset: 25 })
           .setHTML(`
             <h3>مركز ريفولي لطب الأسنان</h3>
-            <p>27 شارع 26 يوليو، وسط البلد، القاهرة</p>
+            <p>رامسيس، الأزبكية، القاهرة</p>
           `)
       )
       .addTo(map);
