@@ -721,7 +721,7 @@ if (confirmButton) {
           title: 'جاري تأكيد الحجز عبر واتساب',
           text: 'سيتم فتح واتساب الآن لإرسال تفاصيل الحجز...',
           icon: 'info',
-          timer: 4000, // 4 ثوانٍ
+          timer: 3000, // 3 ثوانٍ
           showConfirmButton: false,
           allowOutsideClick: false,
           allowEscapeKey: false,
@@ -738,24 +738,29 @@ if (confirmButton) {
             if (scheduleTable) scheduleTable.style.display = 'none';
             if (confirmButton) confirmButton.disabled = true;
 
-            // تأخير 500 مللي ثانية قبل التحويل
-            setTimeout(() => {
-              // المحاولة الأولى: window.location.href
-              window.location.href = whatsappUrl;
+            // تسجيل محاولة التوجيه
+            console.log('جاري التوجيه إلى واتساب:', { whatsappUrl, userAgent: navigator.userAgent });
 
-              // المحاولة الاحتياطية: window.open بعد 500 مللي ثانية إضافية
-              setTimeout(() => {
+            // التوجيه المباشر لواتساب
+            window.location.href = whatsappUrl;
+
+            // فحص احتياطي للتأكد من التوجيه (بعد 1 ثانية)
+            setTimeout(() => {
+              // إذا لم يتغير عنوان الصفحة، جرب window.open
+              if (window.location.href !== whatsappUrl) {
+                console.warn('فشل window.location.href، جاري المحاولة بـ window.open');
                 const whatsappWindow = window.open(whatsappUrl, '_blank');
                 if (!whatsappWindow) {
-                  throw new Error('فشل فتح نافذة واتساب. قد تكون النوافذ المنبثقة محظورة.');
+                  throw new Error('فشل فتح واتساب. قد تكون النوافذ المنبثقة محظورة.');
                 }
-              }, 500);
-            }, 500); // تأخير 500 مللي ثانية
+              }
+            }, 1000);
           } catch (error) {
             console.error('خطأ أثناء إرسال بيانات الحجز إلى واتساب:', {
               error: error.message,
               userAgent: navigator.userAgent,
-              whatsappUrl: whatsappUrl
+              whatsappUrl: whatsappUrl,
+              currentUrl: window.location.href
             });
             Swal.fire({
               title: 'خطأ',
@@ -763,6 +768,10 @@ if (confirmButton) {
                 فشل إرسال الحجز إلى واتساب. يرجى التأكد من تثبيت تطبيق واتساب أو انقر على الرابط التالي لفتحه يدويًا:
                 <br><br>
                 <a href="${whatsappUrl}" target="_blank" style="color: #4FC3F7; text-decoration: underline;">فتح واتساب الآن</a>
+                <br><br>
+                أو انسخ الرسالة التالية وأرسلها يدويًا:
+                <br>
+                <textarea readonly style="width: 100%; height: 100px; margin-top: 10px;">${decodeURIComponent(message)}</textarea>
               `,
               icon: 'error',
               confirmButtonText: 'حسناً',
