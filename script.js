@@ -20,7 +20,7 @@ const services = [
     id: 2,
     name: 'تنظيف الأسنان',
     description: 'إزالة الجير والبقع للحفاظ على صحة الأسنان.',
-    image: 'https://i.ibb.co/bgJkP6YJ/Screenshot-2025-08-24-034929.png',
+    image: 'https://via.placeholder.com/300x180?text=تنظيف+الأسنان',
     duration: '30 دقيقة',
     benefits: 'منع التسوس، تحسين صحة اللثة.',
     moreInfo: 'تنظيف بالموجات فوق الصوتية.',
@@ -36,7 +36,7 @@ const services = [
     id: 3,
     name: 'تبييض الأسنان',
     description: 'تبييض الأسنان بأمان وسرعة.',
-    image: 'https://i.ibb.co/39hL9K7W/png.webp',
+    image: 'https://via.placeholder.com/300x180?text=تبييض+الأسنان',
     duration: '1 ساعة',
     benefits: 'ابتسامة مشرقة، تحسين الثقة بالنفس.',
     moreInfo: 'استخدام ليزر آمن ومواد عالية الجودة.',
@@ -626,7 +626,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (confirmButton) {
+if (confirmButton) {
   confirmButton.addEventListener('click', () => {
     const serviceId = serviceSelect ? serviceSelect.value : '';
     const name = patientName ? patientName.value.trim() : '';
@@ -668,7 +668,7 @@ document.addEventListener('DOMContentLoaded', () => {
     bookingDate.setDate(bookingDate.getDate() + 7);
     const formattedDate = bookingDate.toLocaleDateString('ar-EG');
 
-    // تشكيل الرسالة مع التأكد من التشفير الصحيح
+    // تشكيل الرسالة مع تشفير دقيق للأحرف العربية
     const message = encodeURIComponent(
       `حجز جديد:\n` +
       `الاسم: ${name}\n` +
@@ -678,7 +678,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `الساعة: ${selectedSlot.time}\n` +
       `التاريخ: ${formattedDate}\n` +
       `رابط المركز: https://revoli-dental.com`
-    );
+    ).replace(/%0A/g, '%0D%0A'); // تحسين فواصل الأسطر للواتساب
 
     // عرض ملخص الحجز
     Swal.fire({
@@ -704,7 +704,7 @@ document.addEventListener('DOMContentLoaded', () => {
           title: 'جاري تأكيد الحجز عبر واتساب',
           text: 'سيتم فتح واتساب الآن لإرسال تفاصيل الحجز...',
           icon: 'info',
-          timer: 2000,
+          timer: 3000, // زيادة المدة إلى 3 ثوانٍ
           showConfirmButton: false,
           allowOutsideClick: false,
           allowEscapeKey: false,
@@ -721,14 +721,36 @@ document.addEventListener('DOMContentLoaded', () => {
             if (scheduleTable) scheduleTable.style.display = 'none';
             if (confirmButton) confirmButton.disabled = true;
 
-            // فتح رابط واتساب في تبويب جديد مع التأكد من صيغة الرابط
-            const whatsappUrl = `https://api.whatsapp.com/send?phone=+201030956097&text=${message}`;
-            window.open(whatsappUrl, '_blank');
+            // كشف نوع الجهاز لاختيار صيغة الرابط المناسبة
+            const userAgent = navigator.userAgent.toLowerCase();
+            let whatsappUrl;
+            if (/android|webos|blackberry|opera mini|opera mobi|iemobile/i.test(userAgent)) {
+              // أجهزة أندرويد
+              whatsappUrl = `https://wa.me/+201030956097?text=${message}`;
+            } else if (/iphone|ipad|ipod/i.test(userAgent)) {
+              // أجهزة آيفون
+              whatsappUrl = `https://api.whatsapp.com/send?phone=+201030956097&text=${message}`;
+            } else {
+              // أجهزة سطح المكتب أو غيرها
+              whatsappUrl = `https://web.whatsapp.com/send?phone=+201030956097&text=${message}`;
+            }
+
+            // فتح رابط واتساب مع تأخير إضافي
+            setTimeout(() => {
+              const whatsappWindow = window.open(whatsappUrl, '_blank');
+              if (!whatsappWindow) {
+                throw new Error('فشل فتح نافذة واتساب. قد تكون النوافذ المنبثقة محظورة.');
+              }
+            }, 100); // تأخير 100 مللي ثانية لضمان التوافق
           } catch (error) {
-            console.error('خطأ أثناء إرسال بيانات الحجز إلى واتساب:', error);
+            console.error('خطأ أثناء إرسال بيانات الحجز إلى واتساب:', {
+              error: error.message,
+              userAgent: navigator.userAgent,
+              whatsappUrl: whatsappUrl
+            });
             Swal.fire({
               title: 'خطأ',
-              text: 'فشل إرسال الحجز إلى واتساب، يرجى المحاولة لاحقًا.',
+              text: 'فشل إرسال الحجز إلى واتساب. يرجى التأكد من تثبيت تطبيق واتساب أو حاول فتح الرابط يدويًا: https://wa.me/+201030956097?text=' + message,
               icon: 'error',
               confirmButtonColor: '#4FC3F7'
             });
