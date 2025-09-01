@@ -25,7 +25,7 @@ const services = [
     benefits: 'منع التسوس، تحسين صحة اللثة.',
     moreInfo: 'تنظيف بالموجات فوق الصوتية.',
     details: 'تنظيف عميق باستخدام الموجات فوق الصوتية لإزالة الجير والبقع بأمان.',
-    video: '<iframe width="560" height="315" src="https://www.youtube.com/embed/g5F_LOWJBhk?si=jFPuq_nG7MMErflR&amp;controls=0&amp;start=14" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
+    video: 'https://www.youtube.com/embed/g5F_LOWJBhk?si=jFPuq_nG7MMErflR&amp;controls=0&amp;start=14" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
     images: [
       'https://i.ibb.co/q3Q1Q9jz/4.png',
     ]
@@ -857,6 +857,7 @@ if (mapSection) {
 
 // دعم اللغة الافتراضية
 document.documentElement.lang = navigator.language || 'ar';
+
 
 
 
