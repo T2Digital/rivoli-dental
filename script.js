@@ -90,7 +90,7 @@ const services = [
     id: 8,
     name: 'زراعة الأسنان',
     description: 'زراعة أسنان دائمة بجودة عالية.',
-    image: 'https://via.placeholder.com/300x180?text=زراعة+الأسنان',
+    image: 'https://i.ibb.co/1Y4VRVvS/image.jpg',
     duration: '3-6 أشهر',
     benefits: 'استعادة وظيفة الأسنان، مظهر طبيعي.',
     moreInfo: 'زراعة بتقنية 3D لضمان الدقة.',
@@ -857,6 +857,7 @@ if (mapSection) {
 
 // دعم اللغة الافتراضية
 document.documentElement.lang = navigator.language || 'ar';
+
 
 
 
