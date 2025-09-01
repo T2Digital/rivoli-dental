@@ -67,7 +67,7 @@ const services = [
     benefits: 'إصلاح التسوس، حماية الأسنان.',
     moreInfo: 'حشوات متينة وآمنة.',
     details: 'حشوات عادية باستخدام مواد عالية الجودة لعلاج التسوس وحماية الأسنان.',
-    video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    video: 'https://www.youtube.com/embed/fm208EgQUoU?si=oLRNMVboAmFbLOXh&amp;controls=0',
     images: [
       'https://i.ibb.co/Gvwwy0bR/7.png',
     ]
@@ -857,6 +857,7 @@ if (mapSection) {
 
 // دعم اللغة الافتراضية
 document.documentElement.lang = navigator.language || 'ar';
+
 
 
 
