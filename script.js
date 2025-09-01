@@ -4,7 +4,7 @@ const services = [
     id: 1,
     name: 'استشارة',
     description: 'استشارة طبية لتقييم حالة الأسنان.',
-    image: 'https://i.ibb.co/Ng6Qw72N/image.png',
+    image: 'https://i.ibb.co/Nd3mJqHP/image.jpg',
     duration: '30 دقيقة',
     benefits: 'تشخيص دقيق، خطة علاج مخصصة.',
     moreInfo: 'استشارة مع أطباء متخصصين.',
@@ -857,6 +857,7 @@ if (mapSection) {
 
 // دعم اللغة الافتراضية
 document.documentElement.lang = navigator.language || 'ar';
+
 
 
 
