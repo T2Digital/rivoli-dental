@@ -191,7 +191,7 @@ const services = [
     benefits: 'حل المشكلات المعقدة، راحة سريعة.',
     moreInfo: 'إجراءات جراحية دقيقة.',
     details: 'خلع جراحي باستخدام تقنيات متقدمة لضمان الدقة والراحة.',
-    video: 'https://www.youtube.com/embed/FDS5v5nsN4U?si=LtpQbwXgd66TIPYa&amp;start=30',
+    video: 'https://www.youtube.com/embed/FDS5v5nsN4U?si=NYcFwcIJXT5gFFnu&amp;controls=0&amp;start=30',
     images: [
       'https://via.placeholder.com/300x200?text=خلع+جراحي+1',
       'https://via.placeholder.com/300x200?text=خلع+جراحي+2',
@@ -857,6 +857,7 @@ if (mapSection) {
 
 // دعم اللغة الافتراضية
 document.documentElement.lang = navigator.language || 'ar';
+
 
 
 
