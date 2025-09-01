@@ -20,7 +20,7 @@ const services = [
     id: 2,
     name: 'تنظيف الأسنان',
     description: 'إزالة الجير والبقع للحفاظ على صحة الأسنان.',
-    image: 'https://i.ibb.co/845KqMYc/image.png',
+    image: 'https://i.ibb.co/60WFn0jW/5.jpg',
     duration: '30 دقيقة',
     benefits: 'منع التسوس، تحسين صحة اللثة.',
     moreInfo: 'تنظيف بالموجات فوق الصوتية.',
@@ -857,6 +857,7 @@ if (mapSection) {
 
 // دعم اللغة الافتراضية
 document.documentElement.lang = navigator.language || 'ar';
+
 
 
 
