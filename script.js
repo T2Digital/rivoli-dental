@@ -111,7 +111,7 @@ const services = [
     benefits: 'متانة، مظهر طبيعي.',
     moreInfo: 'تركيبات زيركون وبورسلين.',
     details: 'تركيبات ثابتة باستخدام زيركون أو بورسلين لضمان المتانة والمظهر الطبيعي.',
-    video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    video: 'https://www.youtube.com/embed/qNKYxgSYwBk?si=3wrqdy5z3-XdfsoF&amp;controls=0&amp;start=40',
     images: [
       'https://via.placeholder.com/300x200?text=تركيبات+ثابتة+1',
       'https://via.placeholder.com/300x200?text=تركيبات+ثابتة+2',
@@ -857,6 +857,7 @@ if (mapSection) {
 
 // دعم اللغة الافتراضية
 document.documentElement.lang = navigator.language || 'ar';
+
 
 
 
