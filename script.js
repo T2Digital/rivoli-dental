@@ -154,7 +154,7 @@ const services = [
     id: 13,
     name: 'علاج الجذور',
     description: 'علاج جذور الأسنان بدقة عالية.',
-    image: 'https://via.placeholder.com/300x180?text=علاج+الجذور',
+    image: 'https://i.ibb.co/6JG8r6F9/11-1-625x615.jpg',
     duration: '1-2 ساعة',
     benefits: 'إزالة الألم، الحفاظ على السن.',
     moreInfo: 'علاج باستخدام أحدث الأجهزة.',
@@ -170,7 +170,7 @@ const services = [
     id: 14,
     name: 'خلع عادي',
     description: 'خلع الأسنان بسهولة وأمان.',
-    image: 'https://via.placeholder.com/300x180?text=خلع+عادي',
+    image: 'https://i.ibb.co/CRfFgfw/Screenshot-2025-08-24-194754.png',
     duration: '30 دقيقة',
     benefits: 'إزالة الأسنان التالفة، راحة فورية.',
     moreInfo: 'خلع بأقل ألم ممكن.',
@@ -186,7 +186,7 @@ const services = [
     id: 15,
     name: 'خلع جراحي',
     description: 'خلع الأسنان المعقدة بإجراءات جراحية.',
-    image: 'https://via.placeholder.com/300x180?text=خلع+جراحي',
+    image: 'https://i.ibb.co/BVqf97Vz/Screenshot-2025-08-24-195954.png',
     duration: '1 ساعة',
     benefits: 'حل المشكلات المعقدة، راحة سريعة.',
     moreInfo: 'إجراءات جراحية دقيقة.',
@@ -857,6 +857,7 @@ if (mapSection) {
 
 // دعم اللغة الافتراضية
 document.documentElement.lang = navigator.language || 'ar';
+
 
 
 
