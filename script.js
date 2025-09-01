@@ -106,7 +106,7 @@ const services = [
     id: 9,
     name: 'تركيبات ثابتة',
     description: 'تركيبات أسنان دائمة لتحسين الوظيفة.',
-    image: 'https://via.placeholder.com/300x180?text=تركيبات+ثابتة',
+    image: 'https://i.ibb.co/zH7HwggB/image.jpg',
     duration: '2-4 أسابيع',
     benefits: 'متانة، مظهر طبيعي.',
     moreInfo: 'تركيبات زيركون وبورسلين.',
@@ -857,6 +857,7 @@ if (mapSection) {
 
 // دعم اللغة الافتراضية
 document.documentElement.lang = navigator.language || 'ar';
+
 
 
 
