@@ -53,7 +53,7 @@ const services = [
     benefits: 'لثة صحية ومظهر جمالي.',
     moreInfo: 'علاج بالليزر لتصحيح لون اللثة.',
     details: 'توريد اللثة باستخدام تقنيات ليزر متقدمة للحصول على لثة صحية ومظهر طبيعي.',
-    video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    video: 'https://www.youtube.com/embed/eY6wAabZOL0?si=QX0en0kg8suy-yUD&amp;controls=0',
     images: [
       'https://i.ibb.co/YF9LYyss/2.jpg',
     ]
@@ -857,6 +857,7 @@ if (mapSection) {
 
 // دعم اللغة الافتراضية
 document.documentElement.lang = navigator.language || 'ar';
+
 
 
 
