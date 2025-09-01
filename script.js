@@ -143,7 +143,7 @@ const services = [
     benefits: 'إصلاح العلاج السابق، الحفاظ على السن.',
     moreInfo: 'علاج دقيق بتقنيات متقدمة.',
     details: 'إعادة حشو قنوات العصب باستخدام تقنيات متقدمة لضمان نجاح العلاج.',
-    video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    video: 'https://www.youtube.com/embed/pQsd5nc6hAA?si=jSOZNdKJhlA7rfJa&amp;controls=0',
     images: [
       'https://via.placeholder.com/300x200?text=إعادة+عصب+1',
       'https://via.placeholder.com/300x200?text=إعادة+عصب+2',
@@ -857,6 +857,7 @@ if (mapSection) {
 
 // دعم اللغة الافتراضية
 document.documentElement.lang = navigator.language || 'ar';
+
 
 
 
