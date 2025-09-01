@@ -183,6 +183,20 @@ const services = [
     images: [
       'https://i.ibb.co/dsrqZVvY/14.jpg',
     ]
+  },
+  {
+    id: 16,
+    name: 'تقويم الاسنان',
+    description: 'تصحيح اعوجاج الأسنان وعدم انتظام محاذاة الفكين.',
+    image: 'https://i.ibb.co/6cTQHtpT/2.jpg',
+    duration: '6-24 شهر',
+    benefits: 'تحسين المظهر الجمالي.',
+    moreInfo: 'يمنح ابتسامة أكثر تناسقًا وجمالًا.',
+    details: 'لا يقتصر دوره على الجماليات فقط، بل يعالج أيضًا مشكلات وظيفية في الفم.',
+    video: 'https://www.youtube.com/embed/FDS5v5nsN4U?si=NYcFwcIJXT5gFFnu&amp;controls=0&amp;start=30',
+    images: [
+      'https://i.ibb.co/Q30h1C2Z/5.png',
+    ]
   }
 ];
 
@@ -843,6 +857,7 @@ if (mapSection) {
 
 // دعم اللغة الافتراضية
 document.documentElement.lang = navigator.language || 'ar';
+
 
 
 
