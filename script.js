@@ -81,7 +81,7 @@ const services = [
     benefits: 'مظهر طبيعي، تحسين الابتسامة.',
     moreInfo: 'حشوات مطابقة للون الأسنان.',
     details: 'حشوات تجميلية أمامية بمواد مطابقة للون الأسنان لتحسين المظهر.',
-    video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    video: 'https://www.youtube.com/embed/l3eYVoifbbQ?si=uoryJ9z0fTF_ymgy&amp;controls=0',
     images: [
       'https://i.ibb.co/dJGM2kzZ/3.jpg',
     ]
@@ -857,6 +857,7 @@ if (mapSection) {
 
 // دعم اللغة الافتراضية
 document.documentElement.lang = navigator.language || 'ar';
+
 
 
 
