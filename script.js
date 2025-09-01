@@ -159,7 +159,7 @@ const services = [
     benefits: 'إزالة الألم، الحفاظ على السن.',
     moreInfo: 'علاج باستخدام أحدث الأجهزة.',
     details: 'علاج جذور الأسنان باستخدام أجهزة متطورة لضمان الراحة وإزالة الألم.',
-    video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    video: 'https://www.youtube.com/embed/P3BJ6jR-_cI?si=pUy0-MTqyOib9tY7&amp;controls=0',
     images: [
       'https://via.placeholder.com/300x200?text=جذور+1',
       'https://via.placeholder.com/300x200?text=جذور+2',
@@ -175,7 +175,7 @@ const services = [
     benefits: 'إزالة الأسنان التالفة، راحة فورية.',
     moreInfo: 'خلع بأقل ألم ممكن.',
     details: 'خلع الأسنان باستخدام تقنيات حديثة لضمان الراحة وتقليل الألم.',
-    video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    video: 'https://www.youtube.com/embed/RIhr32Ko-uY?si=jAahJUVXr7C41Bv1&amp;controls=0',
     images: [
       'https://via.placeholder.com/300x200?text=خلع+عادي+1',
       'https://via.placeholder.com/300x200?text=خلع+عادي+2',
@@ -191,7 +191,7 @@ const services = [
     benefits: 'حل المشكلات المعقدة، راحة سريعة.',
     moreInfo: 'إجراءات جراحية دقيقة.',
     details: 'خلع جراحي باستخدام تقنيات متقدمة لضمان الدقة والراحة.',
-    video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    video: 'https://www.youtube.com/embed/FDS5v5nsN4U?si=LtpQbwXgd66TIPYa&amp;start=30',
     images: [
       'https://via.placeholder.com/300x200?text=خلع+جراحي+1',
       'https://via.placeholder.com/300x200?text=خلع+جراحي+2',
@@ -857,6 +857,7 @@ if (mapSection) {
 
 // دعم اللغة الافتراضية
 document.documentElement.lang = navigator.language || 'ar';
+
 
 
 
