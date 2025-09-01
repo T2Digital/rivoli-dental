@@ -39,7 +39,7 @@ const services = [
     benefits: 'ابتسامة مشرقة، تحسين الثقة بالنفس.',
     moreInfo: 'استخدام ليزر آمن ومواد عالية الجودة.',
     details: 'تبييض الأسنان باستخدام ليزر آمن ومواد معتمدة عالميًا، مع نتائج فورية.',
-    video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    video: 'https://www.youtube.com/embed/4l9jGjp60t8?si=jTziq5BsHPPLf5qi&amp;controls=0',
     images: [
       'https://i.ibb.co/845KqMYc/image.png',
     ]
@@ -857,6 +857,7 @@ if (mapSection) {
 
 // دعم اللغة الافتراضية
 document.documentElement.lang = navigator.language || 'ar';
+
 
 
 
