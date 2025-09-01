@@ -41,7 +41,7 @@ const services = [
     details: 'تبييض الأسنان باستخدام ليزر آمن ومواد معتمدة عالميًا، مع نتائج فورية.',
     video: 'https://www.youtube.com/embed/4l9jGjp60t8?si=jTziq5BsHPPLf5qi&amp;controls=0',
     images: [
-      'https://i.ibb.co/845KqMYc/image.png',
+      'https://i.ibb.co/j9bHdMmn/6.jpg',
     ]
   },
   {
@@ -69,7 +69,7 @@ const services = [
     details: 'حشوات عادية باستخدام مواد عالية الجودة لعلاج التسوس وحماية الأسنان.',
     video: 'https://www.youtube.com/embed/fm208EgQUoU?si=oLRNMVboAmFbLOXh&amp;controls=0',
     images: [
-      'https://i.ibb.co/Gvwwy0bR/7.png',
+      'https://i.ibb.co/DD7xDJ7t/8.jpg',
     ]
   },
   {
@@ -97,9 +97,7 @@ const services = [
     details: 'زراعة الأسنان باستخدام تقنية 3D لضمان الدقة والراحة، مع ضمان لمدة 5 سنوات.',
     video: 'https://www.youtube.com/embed/vjhHnTCSy0U?si=5Anxl3wlUnBerxPp&amp;controls=0',
     images: [
-      'https://via.placeholder.com/300x200?text=زراعة+1',
-      'https://via.placeholder.com/300x200?text=زراعة+2',
-      'https://via.placeholder.com/300x200?text=زراعة+3'
+      'https://i.ibb.co/yncQJrPw/9.jpg',
     ]
   },
   {
@@ -113,9 +111,7 @@ const services = [
     details: 'تركيبات ثابتة باستخدام زيركون أو بورسلين لضمان المتانة والمظهر الطبيعي.',
     video: 'https://www.youtube.com/embed/qNKYxgSYwBk?si=3wrqdy5z3-XdfsoF&amp;controls=0&amp;start=40',
     images: [
-      'https://via.placeholder.com/300x200?text=تركيبات+ثابتة+1',
-      'https://via.placeholder.com/300x200?text=تركيبات+ثابتة+2',
-      'https://via.placeholder.com/300x200?text=تركيبات+ثابتة+3'
+      'https://i.ibb.co/4nGbLSKH/10.jpg',
     ]
   },
   {
@@ -129,9 +125,7 @@ const services = [
     details: 'تركيبات متحركة مريحة وسهلة الاستخدام، مصممة حسب احتياجات المريض.',
     video: 'https://www.youtube.com/embed/vi6CKJmMkzk?si=g-lfqIAfU_K6JyAD&amp;controls=0',
     images: [
-      'https://via.placeholder.com/300x200?text=تركيبات+متحركة+1',
-      'https://via.placeholder.com/300x200?text=تركيبات+متحركة+2',
-      'https://via.placeholder.com/300x200?text=تركيبات+متحركة+3'
+      'https://i.ibb.co/GQqVm7rc/11.jpg',
     ]
   },
   {
@@ -145,9 +139,7 @@ const services = [
     details: 'إعادة حشو قنوات العصب باستخدام تقنيات متقدمة لضمان نجاح العلاج.',
     video: 'https://www.youtube.com/embed/pQsd5nc6hAA?si=jSOZNdKJhlA7rfJa&amp;controls=0',
     images: [
-      'https://via.placeholder.com/300x200?text=إعادة+عصب+1',
-      'https://via.placeholder.com/300x200?text=إعادة+عصب+2',
-      'https://via.placeholder.com/300x200?text=إعادة+عصب+3'
+      'https://i.ibb.co/Kx6wHHX7/12.jpg',
     ]
   },
   {
@@ -161,9 +153,7 @@ const services = [
     details: 'علاج جذور الأسنان باستخدام أجهزة متطورة لضمان الراحة وإزالة الألم.',
     video: 'https://www.youtube.com/embed/P3BJ6jR-_cI?si=pUy0-MTqyOib9tY7&amp;controls=0',
     images: [
-      'https://via.placeholder.com/300x200?text=جذور+1',
-      'https://via.placeholder.com/300x200?text=جذور+2',
-      'https://via.placeholder.com/300x200?text=جذور+3'
+      'https://i.ibb.co/LdBGW55W/13.jpg',
     ]
   },
   {
@@ -177,9 +167,7 @@ const services = [
     details: 'خلع الأسنان باستخدام تقنيات حديثة لضمان الراحة وتقليل الألم.',
     video: 'https://www.youtube.com/embed/RIhr32Ko-uY?si=jAahJUVXr7C41Bv1&amp;controls=0',
     images: [
-      'https://via.placeholder.com/300x200?text=خلع+عادي+1',
-      'https://via.placeholder.com/300x200?text=خلع+عادي+2',
-      'https://via.placeholder.com/300x200?text=خلع+عادي+3'
+      'https://i.ibb.co/RpDzLSg7/15.jpg',
     ]
   },
   {
@@ -193,9 +181,7 @@ const services = [
     details: 'خلع جراحي باستخدام تقنيات متقدمة لضمان الدقة والراحة.',
     video: 'https://www.youtube.com/embed/FDS5v5nsN4U?si=NYcFwcIJXT5gFFnu&amp;controls=0&amp;start=30',
     images: [
-      'https://via.placeholder.com/300x200?text=خلع+جراحي+1',
-      'https://via.placeholder.com/300x200?text=خلع+جراحي+2',
-      'https://via.placeholder.com/300x200?text=خلع+جراحي+3'
+      'https://i.ibb.co/dsrqZVvY/14.jpg',
     ]
   }
 ];
@@ -857,6 +843,7 @@ if (mapSection) {
 
 // دعم اللغة الافتراضية
 document.documentElement.lang = navigator.language || 'ar';
+
 
 
 
