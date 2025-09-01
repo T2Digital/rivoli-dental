@@ -122,7 +122,7 @@ const services = [
     id: 10,
     name: 'تركيبات متحركة',
     description: 'تركيبات أسنان قابلة للإزالة.',
-    image: 'https://via.placeholder.com/300x180?text=تركيبات+متحركة',
+    image: 'https://i.ibb.co/S4kjtc5v/image.jpg',
     duration: '1-2 أسابيع',
     benefits: 'راحة، سهولة الاستخدام.',
     moreInfo: 'تركيبات مرنة ومتينة.',
@@ -138,7 +138,7 @@ const services = [
     id: 12,
     name: 'إعادة حشو عصب',
     description: 'إعادة علاج قنوات العصب للحالات السابقة.',
-    image: 'https://via.placeholder.com/300x180?text=إعادة+حشو+عصب',
+    image: 'https://i.ibb.co/mCzcY85S/image.jpg',
     duration: '1-2 ساعة',
     benefits: 'إصلاح العلاج السابق، الحفاظ على السن.',
     moreInfo: 'علاج دقيق بتقنيات متقدمة.',
@@ -857,6 +857,7 @@ if (mapSection) {
 
 // دعم اللغة الافتراضية
 document.documentElement.lang = navigator.language || 'ar';
+
 
 
 
