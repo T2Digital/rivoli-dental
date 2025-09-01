@@ -95,7 +95,7 @@ const services = [
     benefits: 'استعادة وظيفة الأسنان، مظهر طبيعي.',
     moreInfo: 'زراعة بتقنية 3D لضمان الدقة.',
     details: 'زراعة الأسنان باستخدام تقنية 3D لضمان الدقة والراحة، مع ضمان لمدة 5 سنوات.',
-    video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    video: 'https://www.youtube.com/embed/vjhHnTCSy0U?si=5Anxl3wlUnBerxPp&amp;controls=0',
     images: [
       'https://via.placeholder.com/300x200?text=زراعة+1',
       'https://via.placeholder.com/300x200?text=زراعة+2',
@@ -857,6 +857,7 @@ if (mapSection) {
 
 // دعم اللغة الافتراضية
 document.documentElement.lang = navigator.language || 'ar';
+
 
 
 
